@@ -1,13 +1,28 @@
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import reverse
 from django.shortcuts import render
 from django.views import generic
+from cart.models import Order
 from .forms import ContactForm
+
+
+class ProfileView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfileView, self).get_context_data(**kwargs)
+        context.update({
+            "orders": Order.objects.filter(user=self.request.user, ordered=True)
+        })
+        return context
+
 
 class HomeView(generic.TemplateView):
     template_name = 'index.html'
+
 
 class ContactView(generic.FormView):
     form_class = ContactForm
@@ -16,7 +31,7 @@ class ContactView(generic.FormView):
     def get_success_url(self):
         return reverse("contact")
 
-    def form_valid(self,form):
+    def form_valid(self, form):
         messages.info(self.request, "Thanks for getting in touch. We have received your message.")
         name = form.cleaned_data.get('name')
         email = form.cleaned_data.get('email')

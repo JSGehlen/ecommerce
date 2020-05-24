@@ -6,7 +6,8 @@ from .models import (
     RoastVariation,
     SizeVariation,
     Address,
-    Payment
+    Payment,
+    Category
 )
 
 
@@ -20,6 +21,7 @@ class AddressAdmin(admin.ModelAdmin):
     ]
 
 
+admin.site.register(Category)
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Product)
 admin.site.register(OrderItem)

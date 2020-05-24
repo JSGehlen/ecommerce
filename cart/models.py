@@ -7,6 +7,16 @@ from django.shortcuts import reverse
 User = get_user_model()
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
+
+
 class Address(models.Model):
     ADDRESS_CHOICES = (
         ('B', 'Billing'),
@@ -53,6 +63,8 @@ class Product(models.Model):
     active = models.BooleanField(default=False)
     available_roasts = models.ManyToManyField(RoastVariation)
     available_sizes = models.ManyToManyField(SizeVariation)
+    primary_category = models.ForeignKey(Category, related_name='primary_products', on_delete=models.CASCADE)
+    secondary_categories = models.ManyToManyField(Category, blank=True)
 
     def __str__(self):
         return self.title

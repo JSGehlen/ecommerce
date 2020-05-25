@@ -33,9 +33,9 @@ class ProductCreateView(LoginRequiredMixin, StaffUserMixin, generic.CreateView):
 
 
 class ProductUpdateView(LoginRequiredMixin, StaffUserMixin, generic.UpdateView):
-    template_name = 'staff/product_update.html'
-    queryset = Product.objects.all()
+    template_name = 'staff/product_create.html'
     form_class = ProductForm
+    queryset = Product.objects.all()
 
     def get_success_url(self):
         return reverse("staff:product-list")
@@ -46,7 +46,7 @@ class ProductUpdateView(LoginRequiredMixin, StaffUserMixin, generic.UpdateView):
 
 
 class ProductDeleteView(LoginRequiredMixin, StaffUserMixin, generic.DeleteView):
-    template_name = 'staff/product_detele.html'
+    template_name = 'staff/product_delete.html'
     queryset = Product.objects.all()
 
     def get_success_url(self):

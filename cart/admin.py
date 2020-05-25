@@ -7,7 +7,8 @@ from .models import (
     SizeVariation,
     Address,
     Payment,
-    Category
+    Category,
+    StripePayment
 )
 
 
@@ -29,3 +30,4 @@ admin.site.register(Order)
 admin.site.register(RoastVariation)
 admin.site.register(SizeVariation)
 admin.site.register(Payment)
+admin.site.register(StripePayment)

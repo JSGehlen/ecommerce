@@ -43,48 +43,8 @@
 
 <body>
 
-<div class="site-wrap">
+
     <header class="site-navbar" role="banner">
-        <div class="site-navbar-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-6 col-md-8 mb-3 mb-md-0 col-md-4 order-1 order-md-2">
-                        <div>
-                            <a href="{% url 'home' %}">
-                                <img class="img-fluid" src="{% static 'images/logoimg.png' %}" style="max-width: 100px;"/>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4 order-3 order-md-3 text-right">
-                        <div class="site-top-icons">
-                            <ul>
-                                <li>
-                                    {% if request.user.is_authenticated %}
-                                        <a href="{% url 'profile' %}"><span><i class="fas fa-user"></i></span></a>
-                                    {% else %}
-                                        <a href="{% url 'account_login' %}"><span><i
-                                                class="fas fa-sign-in-alt"></i></span></a>
-                                    {% endif %}
-                                </li>
-                                <li>
-                                    <a href="{% url 'cart:summary' %}" class="site-cart">
-                                        <span><i class="fas fa-shopping-cart"></i></span>
-                                        <span class="count">{{ request|cart_item_count }}</span>
-                                    </a>
-                                </li>
-                                <li class="d-inline-block d-md-none ml-md-0">
-                                    <a href="#" class="site-menu-toggle js-menu-toggle">
-                                        <span><i class="fas fa-bars"></i></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         {% include 'navbar.html' %}
         {% if messages %}
             {% for message in messages %}
@@ -97,7 +57,6 @@
                 </div>
             {% endfor %}
         {% endif %}
-
     </header>
 
     {% block content %}
@@ -105,7 +64,6 @@
 
     {% include 'footer.html' %}
 
-</div>
 
 {% include 'scripts.html' %}
 

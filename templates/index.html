@@ -12,6 +12,10 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="{% static 'images/CoffeeDisplay.png' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Payments are handled by Stripe or Paypal</h5>
+          <p>Both are relatively easy to setup due to excellent documentation on their end</p>
+        </div>
     </div>
     <div class="carousel-item">
       <img src="{% static 'images/CoffeeDisplay.png' %}" class="d-block w-100" alt="...">
@@ -35,11 +39,12 @@
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="">
                 <div class="icon mr-4 align-self-start">
-                    <span><i class="fab fa-cc-paypal"></i></span>
+                    <span><i class="fas fa-mug-hot"></i></span>
                 </div>
                 <div class="text">
-                    <h2 class="text-uppercase">Pay with Paypal</h2>
-                    <p>Use server-side PayPal integration for handling payments.</p>
+                    <h2 class="text-uppercase">Hot coffee!</h2>
+                    <p>It's a good idea to drink coffee while coding</p>
+                    <p>It keeps your brain focused 100%</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
@@ -51,7 +56,8 @@
                 </svg>
                 <div class="text">
                     <h2 class="text-uppercase">Made with Django</h2>
-                    <p>Django makes it easy to quickly build awesome web apps.</p>
+                    <p>Django makes it easy to quickly build web apps, full-stack websites and more.</p>
+                    <p>This is an fake e-commerce coffee shop example</p>
                 </div>
             </div>
         </div>

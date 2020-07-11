@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            {{ request.user.email }}
+                            Signed in as {{ request.user.email }}
                             <a href="{% url 'account_logout' %}"><small class="float-right">Logout</small></a>
                         </h5>
                         <hr />

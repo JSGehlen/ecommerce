@@ -22,11 +22,11 @@
                                 <tbody>
                                     {% for product in products %}
                                         <tr>
-                                            <td>{{ product.title }}</td>
+                                            <td><strong>{{ product.title }}</strong></td>
                                             <td>{{ product.get_price }} €</td>
                                             <td>
-                                                <a href="{{ product.get_update_url }}">Update</a>
-                                                <a 
+                                                <a class="btn btn-sm btn-outline-secondary"href="{{ product.get_update_url }}">Update</a>
+                                                <a class="btn btn-sm btn-outline-danger"
                                                 tabindex="0" 
                                                 class="btn btn-sm btn-primary"
                                                 role="button"
@@ -34,7 +34,7 @@
                                                 data-toggle="popover"
                                                 data-trigger="popover"
                                                 title="Are you sure you want to delete this product?"
-                                                data-content="<a href='{{ product.get_delete_url }}'>Confirm</a>">X</a>
+                                                data-content="<a href='{{ product.get_delete_url }}'>Confirm</a>">Delete</a>
                                             </td>
                                         </tr>
                                     {% empty %}

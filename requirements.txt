@@ -3,7 +3,6 @@ backports.functools-lru-cache==1.6.1
 configparser==4.0.2
 Django==1.11.29
 enum34==1.1.10
-futures==3.3.0
 gunicorn==19.10.0
 isort==4.3.21
 lazy-object-proxy==1.4.3
@@ -14,3 +13,4 @@ pytz==2020.1
 singledispatch==3.4.0.3
 six==1.14.0
 wrapt==1.12.1
+python-dotenv

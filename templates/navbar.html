@@ -1,42 +1,51 @@
 {% load static %}
 {% load cart_template_tags %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark static-top">
   <div class="container">
-    <a class="navbar-brand" href="#">
-          <img src="{% static 'images/logo.png' %}" style="max-width: 100px;"/>
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'ecommerce/images/logo.svg' %}" style="height: 60px;">
         </a>
+            <a class="nav-link text-muted" href="https://github.com/JSGehlen/ecommerce/">Source code <span><i class="fab fa-github ml-2 text-muted"></i></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
+    <div class="bg-dark collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mx-auto">
         <li class="nav-item active">
-          <a class="nav-link text-dark" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link " href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="{% url 'cart:product-list' %}">Shop</a>
+          <a class="nav-link " href="{% url 'cart:product-list' %}">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="{% url 'contact' %}">Contact</a>
-        </li>
-        {% if request.user.is_staff %}
-            <li class="nav-item"><a class="nav-link text-dark" href="{% url 'staff:staff' %}">Staff</a></li>
-        {% endif %}
-        <li class="nav-item">
-            {% if request.user.is_authenticated %}
-                <a class="nav-link text-dark" href="{% url 'profile' %}"><span><i class="fas fa-user"></i></span></a>
-            {% else %}
-                <a class="nav-link text-dark" href="{% url 'account_login' %}"><span><i
-                        class="fas fa-sign-in-alt"></i></span></a>
-            {% endif %}
+          <a class="nav-link " href="{% url 'contact' %}">Contact</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" href="{% url 'cart:summary' %}" class="site-cart">
-                <span><i class="fas fa-shopping-cart"></i></span>
-                <span class="count">{{ request|cart_item_count }}</span>
+            <a class="nav-link " href="{% url 'cart:summary' %}" class="site-cart">Shopping cart
+                <span><i class="fas fa-shopping-cart ml-1 text-muted"></i></span>
+                <span class="text-muted count">{{ request|cart_item_count }}</span>
             </a>
         </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if request.user.is_staff %}
+            <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-secondary mx-2" href="{% url 'staff:staff' %}">Staff</a></li>
+        {% endif %}
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                      <a class="nav-link btn btn-sm btn-outline-secondary mx-2" href="{% url 'profile' %}"><span><i class="fas fa-user"></i></span></a>                
+              </li>
+              <li class="nav-item">
+                      <a class="nav-link btn btn-sm btn-outline-secondary mx-2" href="{% url 'account_logout' %}"><span>Logout<i class="fas fa-sign-in-alt ml-1"></i></span></a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link btn btn-sm btn-outline-secondary mx-2" href="{% url 'account_login' %}"><span>Login<i
+                        class="fas fa-sign-in-alt ml-1"></i></span></a>
+              </li>
+            {% endif %}
       </ul>
     </div>
   </div>

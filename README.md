@@ -56,7 +56,7 @@ EMAIL_PORT = 'portnumber provided by your email provider'
 EMAIL_USE_TLS = ''
 ```
 
-The SECRET_KEY is a 32 character long string that is usually located in ```settings.py```, but since this project has ```base.py``` and a ```.env``` file, this key is not visible anywhere.
+The SECRET_KEY is a 32 character long string that is usually located in ```settings.py```, but since this project has a ```.env``` file, this key is not visible anywhere.
 
 * Create the ```SECRET_KEY``` by running the following ``` python manage.py shell```
 Then type the following commands:

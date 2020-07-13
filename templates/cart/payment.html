@@ -67,11 +67,36 @@
 
             <div id='paymentInfo'>
                 <p>Order total: ${{ order.get_total }}</p>
-                <h4>Select a payment method</h4>
-                <div>
-                    <a href="{% url 'cart:payment-stripe' %}" class="btn btn-secondary btn-block mb-3">Stripe</a>
+                <h4 class="mb-4">Select a payment method</h4>
+                <div class="mb-4">
+                    <a href="{% url 'cart:payment-stripe' %}" class="btn btn-primary btn-block p-3 mb-3">Stripe</a>
                 </div>
                 <div id="paypal-button-container"></div>
+                <blockquote class="blockquote mb-4">
+                <h2 class="mb-4">This is a test website</h2>
+                    <strong class="text-danger">Do not use your real credit card info</strong>
+                    <p class="mt-4">To test this feature with a <strong>PayPal Sandbox Account</strong>, please use the following information</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><small>Account: <span class="text-info">testing@testingaccount.com</span></small></li>
+                        <li class="list-group-item"><small>Password: <span class="text-info"> =Aia2kz- </small></li>
+                    </ul>
+                    <p class="mt-4">To test this feature with a <strong>PayPal Sandbox Credit Card</strong>, please use the following information</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><small>Card Number: <span class="text-info">4032 0308 6227 7747</span></small></li>
+                        <li class="list-group-item"><small>Exp. <span class="text-info">12/2023 </small></li>
+                        <li class="list-group-item"><small>CVV: <span class="text-info">993</small></li>
+                    </ul>
+                </blockquote>
+                <blockquote class="blockquote">
+                    <p>To test this feature with <strong>Stripe</strong> please use the following test card information</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><small>Card number - <span class="text-info">4242 4242 4242 4242 </span> </small></li>
+                        <li class="list-group-item"><small>Exp. -  <span class="text-info">Any future date</span></small></li>
+                        <li class="list-group-item"><small>CVC - <span class="text-info">Any three numbers</span></small></li>
+                        <li class="list-group-item"><small>Zipcode - <span class="text-info">Any five numbers  </span></small></li>
+                    </ul>
+                <blockquote class="blockquote">
+
             </div>
         </div>
     </div>

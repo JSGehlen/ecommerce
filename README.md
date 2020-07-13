@@ -17,7 +17,7 @@ https://ecommerce.jeremygehlen.com/
  
 * Run ```pip3 install -r requirements.txt``` to install the requirements for this project
 * Create a folder called "static_in_env" in the src folder
-* Rename the **template.env** file to **.env** and fill in your credentials. 
+* Rename the ```template.env``` file to ```.env``` and fill in your credentials. 
 
 ```
 SECRET_KEY='yoursecretkey'

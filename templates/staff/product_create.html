@@ -2,18 +2,28 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-<div class="site-section">
+<header class="masthead d-lg-none">
+<div class="container h-100">
+    <div class="row h-100 align-items-center">
+    <div class="col-12 text-center">
+        <h1 class="display-1 font-weight-bold text-light">Staff dashboard</h1>
+        <p class="lead text-white">Sorry! The staff dashboard can't be accecced by phone</p>
+        <p class="lead text-white">Please use a bigger screen to access the dashboard</p>
+    </div>
+    </div>
+</div>
+</header>
+<div class="site-section d-none d-lg-block">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-            <a href="{% url 'staff:staff' %}">Back to dashboard</a>
+            <a class="btn btn-sm btn-info" href="{% url 'staff:staff' %}">Back to dashboard</a>
             <hr />
             <h4>Create a product</h4>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-info">Submit</button>
             </form>
             </div>
         </div>

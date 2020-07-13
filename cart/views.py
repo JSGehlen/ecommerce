@@ -25,13 +25,14 @@ class ProductListView(generic.ListView):
         qs = Product.objects.all()
         category = self.request.GET.get('category', None)
         if category:
-            qs = qs.filter(Q(primary_category__name=category) | Q(secondary_categories__name=category)).distinct()
+            qs = qs.filter(Q(primary_category__name=category) |
+                           Q(secondary_categories__name=category)).distinct()
         return qs
 
     def get_context_data(self, **kwargs):
         context = super(ProductListView, self).get_context_data(**kwargs)
         context.update({
-            'categories': Category.objects.values('name')
+            "categories": Category.objects.values("name")
         })
         return context
 
@@ -44,11 +45,11 @@ class ProductDetailView(generic.FormView):
         return get_object_or_404(Product, slug=self.kwargs["slug"])
 
     def get_success_url(self):
-        return reverse("cart:product-list")
+        return reverse("cart:summary")
 
     def get_form_kwargs(self):
         kwargs = super(ProductDetailView, self).get_form_kwargs()
-        kwargs['product_id'] = self.get_object().id
+        kwargs["product_id"] = self.get_object().id
         return kwargs
 
     def form_valid(self, form):
@@ -58,7 +59,7 @@ class ProductDetailView(generic.FormView):
         item_filter = order.items.filter(
             product=product,
             roast=form.cleaned_data['roast'],
-            size=form.cleaned_data['size']
+            size=form.cleaned_data['size'],
         )
 
         if item_filter.exists():
@@ -81,11 +82,11 @@ class ProductDetailView(generic.FormView):
 
 
 class CartView(generic.TemplateView):
-    template_name = 'cart/cart.html'
+    template_name = "cart/cart.html"
 
     def get_context_data(self, **kwargs):
         context = super(CartView, self).get_context_data(**kwargs)
-        context['order'] = get_or_set_order_session(self.request)
+        context["order"] = get_or_set_order_session(self.request)
         return context
 
 
@@ -94,7 +95,7 @@ class IncreaseQuantityView(generic.View):
         order_item = get_object_or_404(OrderItem, id=kwargs['pk'])
         order_item.quantity += 1
         order_item.save()
-        return redirect('cart:summary')
+        return redirect("cart:summary")
 
 
 class DecreaseQuantityView(generic.View):
@@ -105,14 +106,14 @@ class DecreaseQuantityView(generic.View):
         else:
             order_item.quantity -= 1
             order_item.save()
-        return redirect('cart:summary')
+        return redirect("cart:summary")
 
 
 class RemoveFromCartView(generic.View):
     def get(self, request, *args, **kwargs):
         order_item = get_object_or_404(OrderItem, id=kwargs['pk'])
         order_item.delete()
-        return redirect('cart:summary')
+        return redirect("cart:summary")
 
 
 class CheckoutView(generic.FormView):
@@ -178,7 +179,8 @@ class PaymentView(generic.TemplateView):
         context = super(PaymentView, self).get_context_data(**kwargs)
         context["PAYPAL_CLIENT_ID"] = settings.PAYPAL_CLIENT_ID
         context['order'] = get_or_set_order_session(self.request)
-        context['CALLBACK_URL'] = self.request.build_absolute_uri(reverse('cart:thankyou'))
+        context['CALLBACK_URL'] = self.request.build_absolute_uri(
+            reverse("cart:thank-you"))
         return context
 
 
@@ -214,16 +216,17 @@ class StripePaymentView(generic.FormView):
                 payment_intent = stripe.PaymentIntent.retrieve(
                     payment_intent_id)
                 messages.warning(self.request, "Code is: %s" % err.code)
-        return redirect("/")
+        return redirect("/cart/thank-you")
 
     def get_context_data(self, **kwargs):
         user = self.request.user
         if not user.customer.stripe_customer_id:
             stripe_customer = stripe.Customer.create(email=user.email)
-            user.customer.stripe_customer_id = stripe_customer['id']
+            user.customer.stripe_customer_id = stripe_customer["id"]
             user.customer.save()
 
         order = get_or_set_order_session(self.request)
+
         payment_intent = stripe.PaymentIntent.create(
             amount=order.get_raw_total(),
             currency='eur',
@@ -233,7 +236,7 @@ class StripePaymentView(generic.FormView):
         payment_record, created = StripePayment.objects.get_or_create(
             order=order
         )
-        payment_record.payment_intent_id = payment_intent['id'],
+        payment_record.payment_intent_id = payment_intent["id"]
         payment_record.amount = order.get_total()
         payment_record.save()
 
@@ -241,21 +244,20 @@ class StripePaymentView(generic.FormView):
             customer=user.customer.stripe_customer_id,
             type="card",
         )
-
         payment_methods = []
         for card in cards:
             payment_methods.append({
-                'last4': card['card']['last4'],
-                'brand': card['card']['brand'],
-                'exp_month': card['card']['exp_month'],
-                'exp_year': card['card']['exp_year'],
-                'pm_id': card['id'],
+                "last4": card["card"]["last4"],
+                "brand": card["card"]["brand"],
+                "exp_month": card["card"]["exp_month"],
+                "exp_year": card["card"]["exp_year"],
+                "pm_id": card["id"]
             })
 
         context = super(StripePaymentView, self).get_context_data(**kwargs)
         context["STRIPE_PUBLIC_KEY"] = settings.STRIPE_PUBLIC_KEY
-        context['client_secret'] = payment_intent['client_secret']
-        context['payment_methods'] = payment_methods
+        context["client_secret"] = payment_intent["client_secret"]
+        context["payment_methods"] = payment_methods
         return context
 
 
@@ -267,17 +269,17 @@ class ConfirmOrderView(generic.View):
             order=order,
             successful=True,
             raw_response=json.dumps(body),
-            amount=float(body['purchase_units'][0]['amount']['value']),
-            payment_method='Paypal'
+            amount=float(body["purchase_units"][0]["amount"]["value"]),
+            payment_method='PayPal'
         )
         order.ordered = True
         order.ordered_date = datetime.date.today()
         order.save()
-        return JsonResponse({'data': 'Success'})
+        return JsonResponse({"data": "Success"})
 
 
 class ThankYouView(generic.TemplateView):
-    template_name = 'cart/thankyou.html'
+    template_name = 'cart/thanks.html'
 
 
 class OrderDetailView(LoginRequiredMixin, generic.DetailView):

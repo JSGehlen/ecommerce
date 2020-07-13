@@ -31,7 +31,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         {% if request.user.is_staff %}
-            <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-secondary mx-2" href="{% url 'staff:staff' %}">Staff</a></li>
+            <li class="nav-item d-none d-lg-block"><a class="nav-link btn btn-sm btn-outline-secondary mx-2" href="{% url 'staff:staff' %}">Staff</a></li>
         {% endif %}
             {% if request.user.is_authenticated %}
               <li class="nav-item">

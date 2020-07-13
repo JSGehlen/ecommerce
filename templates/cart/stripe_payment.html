@@ -45,17 +45,19 @@
             <form id="paymentForm" method="post">
                 {% csrf_token %}
                 <div class="form-group">
+                    <blockquote class="blockquote mt-4">
                     <h1>This is a test website</h1>
                     <strong>Do not use your real credit card info</strong>
                     <p>To test this feature, please use the following test card information</p>
-                    <ul>
-                        <li><span>Card number - </span>4242 4242 4242 4242</li>
-                        <li><span>Exp. - </span> 04/24</li>
-                        <li><span>CVC - </span>242</li>
-                        <li><span>Zipcode - </span>42424</li>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><small>Card number - 4242 4242 4242 4242 </small></li>
+                        <li class="list-group-item"><small>Exp. -  04/24  </small></li>
+                        <li class="list-group-item"><small>CVC - 242  </small></li>
+                        <li class="list-group-item"><small>Zipcode - 42424  </small></li>
                     </ul>
+                    </blocquote>
                     
-                    <select id="cardOptions" name="selectedCard" class="form-control">
+                    <select id="cardOptions" name="selectedCard" class="form-control mt-4">
                         <option value="newCard">Use a new card</option>
                         {% for card in payment_methods %}
                             <option value="{{ card.pm_id }}">{{ card.brand }} - {{ card.exp_year }}/{{ card.exp_month }}</option>

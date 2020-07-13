@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-7">
-                    <h2 class="h3 mb-3 text-black">Sign in</h2>
+                    <h2 class="h3 mb-3 text-black">Login</h2>
                 </div>
                 <div class="col-md-7">
                     <form method="post" action="{% url 'account_login' %}">
@@ -19,17 +19,22 @@
                                    value="{{ redirect_field_value }}"/>
                         {% endif %}
                         {{ form|crispy }}
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign in">
+                        <input type="submit" class="btn btn-info btn-sm" value="Login">
+                            <a class="float-right btn btn-outline-info btn-sm" href="{{ signup_url }}">Create new account</a>
                     </form>
                     <div class="row mt-3">
                         <div class="col-6">
-                            <a href="{% url 'account_reset_password' %}"><small>Forgot
-                                password?</small></a>
+                            <a class="text-warning" href="{% url 'account_reset_password' %}">Forgot password?</a>
                         </div>
                         <div class="col-6 text-right">
-                            <a href="{{ signup_url }}"><small>Create new account</small></a>
                         </div>
                     </div>
+                    <hr/>
+                    <blockquote class="blockquote">
+                        <p><small>If you want to test this website without creating an account, you can test it by using these credentials:</small></p>
+                        <p><small>Email: testing@testingaccount.com</small></p>
+                        <p><small>Password: testingpassword1234</small></p>
+                    </blockquote>
                 </div>
             </div>
         </div>

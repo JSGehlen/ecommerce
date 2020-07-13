@@ -14,6 +14,7 @@
   </div>
 </header>
 
+
 <div class="container">
     <div class="row my-5">
       <div class="col-lg-7" data-aos="fade" data-aos-anchor-placement="top-bottom"  data-aos-duration="500">
@@ -22,37 +23,16 @@
       <div class="col-lg-5 d-flex flex-column justify-content-between">
       <div>
         <h1 class="font-weight-bold mb-3">Django Coffee Co</h1>
-        <p>The place for the best coffee in the world. I wish!
-        This is a website concept of what a coffeeshop could look like.
-        Feel free to browse around and give some feedback through the contact form</p>
+        <h3>The place for the best coffee in the world. I wish!</h3>
+        <p>This is a website concept of what a coffee selling e-commerce website could look like.</p>
+        <p>Feel free to browse around and give some feedback through the contact</p>
       </div>
-        <a class="btn btn-secondary btn-sm" href="{% url 'cart:product-list' %}">See our products</a>
+        <a class="btn btn-info btn-sm" href="{% url 'cart:product-list' %}">See our products</a>
       </div>
     </div>
-
     <!-- Content Row -->
-    <div class="row">
-      <div class="col-md-6 mb-5">
-        <div class="card h-100">
-          <div class="card-body">
-            <img class="card-img-top mb-3" src="https://stripe.com/img/v3/home/social.png" alt="Product Image">
-            <h2 class="text-lead mb-3">Payments are handled by Stripe</h2>
-            <p class="font-weight-bold mb-3">
-              <i>A fully integrated suite of payments products</i>
-            </p>
-            <p class="card-text mb-3">
-            <i>We bring together everything that’s required to build websites and apps that accept payments and send payouts globally.</i>
-            </p>
-                        <i>Stripe’s products power payments for online and in-person retailers, subscriptions businesses, software platforms and marketplaces, and everything in between.</i>
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="https://stripe.com/en-fi" class="btn btn-secondary btn-sm">More Info</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-4 -->
-      <div class="col-md-6 mb-5">
+    <div class="row ">
+          <div class="col-md-4 mb-5">
         <div class="card h-100">
           <div class="card-body">
           <img class="card-img-top mb-3" src="https://themeforest.img.customer.envatousercontent.com/files/180904265/djangopre.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=9625d406063207f9205a65eb7d1c6ff0" alt="">
@@ -69,7 +49,45 @@
             </p>
           </div>
           <div class="card-footer">
-            <a href="https://www.djangoproject.com/" class="btn btn-secondary btn-sm">More Info</a>
+            <a href="https://www.djangoproject.com/" class="btn btn-info btn-sm">More Info</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <img class="card-img-top mb-3" src="https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png" alt="Product Image">
+            <h2 class="text-lead mb-3">Users can pay using PayPal</h2>
+            <p class="font-weight-bold mb-3">
+              <i>The platform that grows with you</i>
+            </p>
+            <p class="card-text mb-3">
+            <i>PayPal Commerce Platform is a comprehensive solution designed to serve your business needs and your customers, whether you’re just getting started or already a thriving enterprise or marketplace.</i>
+            </p><i>Leveraging our two-sided network, the platform lets you connect with more than 295 million PayPal customers around the world and across many platforms and marketplaces. Now you can find new markets, new channels, new high-value customers. All while giving your customers the freedom to buy how they want—nearly anywhere in the world.</i>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="https://www.paypal.com/" class="btn btn-info btn-sm">More Info</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <img class="card-img-top mb-3" src="https://stripe.com/img/v3/home/social.png" alt="Product Image">
+            <h2 class="text-lead mb-3">Users can pay using Stripe</h2>
+            <p class="font-weight-bold mb-3">
+              <i>A fully integrated suite of payments products</i>
+            </p>
+            <p class="card-text mb-3">
+            <i>We bring together everything that’s required to build websites and apps that accept payments and send payouts globally.</i>
+            </p>
+                        <i>Stripe’s products power payments for online and in-person retailers, subscriptions businesses, software platforms and marketplaces, and everything in between.</i>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="https://stripe.com/en-fi" class="btn btn-info btn-sm">More Info</a>
           </div>
         </div>
       </div>
@@ -77,6 +95,19 @@
     </div>
     <!-- /.row -->
 
+  </div>
+  <div class="d-none d-lg-block">
+      <div class="row no-gutters mb-0">
+      <div class="col-md-4">
+            <img class="img-fluid" src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="Coffee" >
+      </div>
+      <div class="col-md-4">
+            <img class="img-fluid" src="https://images.unsplash.com/photo-1495100497150-fe209c585f50?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80" alt="Coffee" >
+      </div>
+      <div class="col-md-4">
+            <img class="img-fluid" src="https://images.unsplash.com/photo-1448932284983-0c7b152eba33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="Coffee" >
+      </div>
+    </div>
   </div>
   <!-- /.container -->
   
